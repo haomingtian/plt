@@ -1,6 +1,7 @@
 #include <iostream> 
- 
+#include "Position.h"
 using namespace std;
+namespace state {
 Position::Position(){
 	this->x=0;
 	this->y=0;
@@ -21,6 +22,6 @@ int Position::getY (){
 void Position::setY (int y){
 	this->y = y;
 }
-bool Position::equals (Position& others){
-	
+/*bool Position::equals (Position& others){	
+}*/
 }

@@ -1,7 +1,8 @@
 #include <iostream> 
+#include "Player.h"
  
 using namespace std;
-
+namespace state {
 Player::Player(std::string n_name){
 	name=n_name;
 }
@@ -22,4 +23,5 @@ void Player::setNbGold (int n_nb_gold){
 }
 std::vector<UnityArmy> Player::getUnityArmy (){
 	return list_pions;
+}
 }

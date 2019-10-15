@@ -1,7 +1,8 @@
 #include <iostream> 
- 
+#include "UnityArmy.h" 
 using namespace std;
-UnityArmy (ArmyTypeId id, std::string n_name, bool n_camp){
+namespace state {
+UnityArmy ::UnityArmy(ArmyTypeId id, std::string n_name, bool n_camp){
 	type_id=id;
 	name=n_name;
 	camp=n_camp;
@@ -11,7 +12,7 @@ UnityArmy (ArmyTypeId id, std::string n_name, bool n_camp){
 		pattack=100;
 		pdefense=100;
 	}
-	else if(id==CAVALRY){
+	else if(id==CAVLRY){
 		move_field=2;
 		pattack=150;
 		pdefense=150;
@@ -61,7 +62,7 @@ int UnityArmy::getMoveField (){
 void UnityArmy::setMoveField (int n_move_field){
 	move_field=n_move_field;
 }
-
+}
 
 
 

@@ -1,15 +1,20 @@
 #include <iostream> 
- 
+
+#include "Elements.h"
+
 using namespace std;
+
+namespace state {
+
 Elements::Elements (){
 	name="";
 	position.setX(0);
 	position.setY(0);
 }
-bool isStatic ();
+//bool isStatic ();
 Position& Elements::getPosition (){
 	Position & refPosition = position;
-	return refPosition 
+	return refPosition;
 }
 int Elements::getCodeTuile (){
 	return codetuile;
@@ -17,12 +22,14 @@ int Elements::getCodeTuile (){
 void Elements::setCodeTuile (int n_codetuile){
 	codetuile=n_codetuile;	
 }
-void Elements::equals (Elements& o){
+/*void Elements::equals (Elements& o){
 	bool resultat;
-	if(this->position.equals(other.getPosition())==1 && this->nom==other.getNom()){
+	if(this->position.equals(o.getPosition())==1){
 		resultat = true;}
 	else{
 		resultat = false;
 	}
-	return resultat;
+	//return resultat;
+}
+*/
 }
