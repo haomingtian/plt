@@ -22,6 +22,10 @@ int Elements::getCodeTuile (){
 void Elements::setCodeTuile (int n_codetuile){
 	codetuile=n_codetuile;	
 }
+std::string Elements::getName (){
+	return name;
+}
+
 /*void Elements::equals (Elements& o){
 	bool resultat;
 	if(this->position.equals(o.getPosition())==1){
