@@ -15,6 +15,14 @@ BOOST_AUTO_TEST_CASE(TestPlayer)
     //Player p("joueur1") {};
     Player p("joueur1");
     BOOST_CHECK_EQUAL(p.name, "joueur1");
+    p.name="marly";
+    BOOST_CHECK_EQUAL(p.name, "marly");
+    p.setNbCastle(7);
+    BOOST_CHECK_EQUAL(p.getNbCasle (), 7);
+    p.setNbGold(22);
+    BOOST_CHECK_LE(p.getNbGold (), 32); // Less than equal
+    BOOST_CHECK_GT(p.getNbGold (), 11); // Greater than equl
+    
   }
 
 }
