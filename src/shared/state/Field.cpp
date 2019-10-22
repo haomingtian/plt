@@ -3,9 +3,13 @@
  
 using namespace std;
 namespace state {
-/*Field::Field(int x, int y, int codetuile){
-	x=0;
-	y=0;
-	//codetuile=1;
-}*/	
+Field::Field(int n_x, int n_y, int n_codetuile){
+	position.setX(n_x);
+	position.setY(n_y);
+	codetuile = n_codetuile;
+}
+bool Field::isField (){
+	return true;
+}
+
 }

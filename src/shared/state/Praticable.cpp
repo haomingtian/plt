@@ -14,5 +14,8 @@ namespace state {
 }
 TypePraticableId Praticable::getType (){
 	return type_id;
+}
+bool isPraticable (){
+	return true;
 }*/
 }
