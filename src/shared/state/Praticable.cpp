@@ -3,7 +3,7 @@
  
 using namespace std;
 namespace state {
-/*Praticable ::Praticable(TypePraticableId id, int n_x, int n_y, int n_codetuile){
+Praticable ::Praticable(TypePraticableId id, int n_x, int n_y, int n_codetuile):Field (n_x, n_y, n_codetuile){
 	type_id=id;
 	if(id==LAND){
 		name="LAND";
@@ -17,5 +17,5 @@ TypePraticableId Praticable::getType (){
 }
 bool isPraticable (){
 	return true;
-}*/
+}
 }

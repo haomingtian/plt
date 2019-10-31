@@ -11,5 +11,8 @@ Field::Field(int n_x, int n_y, int n_codetuile){
 bool Field::isField (){
 	return true;
 }
-
+/*bool Field::isOccupated (){
+	int resultat=-1;
+	vector<UnityArmy> & list_unity=state.getUnityArmy();
+}*/
 }

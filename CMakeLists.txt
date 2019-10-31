@@ -90,7 +90,7 @@ if(${MACHINE_ENSEA})
 endif()
 find_package(SFML 2 COMPONENTS graphics network)
 if(NOT ${MACHINE_ENSEA})
-  set(SFML_LIBRARIES sfml-graphics sfml-network)
+  set(SFML_LIBRARIES sfml-graphics sfml-network sfml-window sfml-system)
 endif()
 
 # Find library libmicrohttpd

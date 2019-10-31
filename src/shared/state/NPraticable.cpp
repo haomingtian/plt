@@ -4,7 +4,7 @@
 using namespace std;
 namespace state {
 
-/*NPraticable::NPraticable (TypeNPraticableId id, int x, int y, int codetuile){
+NPraticable::NPraticable (TypeNPraticableId id, int x, int y, int codetuile):Field (x, y, codetuile){
 	type_id=id;
 	if(id==TREE){
 		name="TREE";
@@ -21,5 +21,5 @@ bool NPraticable::isPraticable (){
 }
 TypeNPraticableId NPraticable:: getType (){
 	return type_id;
-}*/
+}
 }
