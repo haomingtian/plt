@@ -20,25 +20,25 @@ namespace render{
 int main(int argc,char* argv[])
 {
 
-    //cout << "bonjour " << argv[1]<< endl;
+    cout << "bonjour " << endl;
     
     // create the window
     
-    sf::RenderWindow window(sf::VideoMode(700, 700), "Tilemap");
+    sf::RenderWindow window(sf::VideoMode(700, 500), "Tilemap");
     /*Correspondence tab_corres = Correspondence();
     unsigned int long_cases = 25, larg_cases = 25;*/
 	//std::string m = "/home/ensea/plt/ressources/map.txt";    
      // define the level with an array of tile indices
     const int level[] =
     {
-        0, 0, 5, 8, 0, 0, 1, 1, 1, 1, 1, 1, 3, 7, 8, 5,8,7,4,5,2,3,7,4,
-        0, 1, 1, 1, 1, 1, 1, 5, 4, 4, 0, 2, 0, 0, 0, 5,8,7,4,5,2,3,7,4,
-        1, 1, 0, 0, 0, 0, 4, 4, 3, 3, 3, 3, 3, 3, 3, 4,8,7,4,5,2,3,7,4,
-        0, 1, 0, 0, 2, 7, 3, 3, 3, 8, 1, 1, 1, 0, 0, 3,8,7,4,5,2,3,7,4,
-        0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 2,8,7,4,5,2,3,7,4,
-        0, 0, 1, 0, 3, 0, 6, 6, 4, 0, 1, 1, 1, 1, 2, 1,8,7,4,5,2,3,7,4,
-        2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 5, 5, 6, 0,8,7,4,5,2,3,7,4,
-        0, 0, 1, 0, 3, 5, 5, 2, 0, 0, 0, 0, 1, 1, 1, 6,8,7,4,5,1,3,7,4,
+        0, 1, 2, 3, 0, 1, 2, 3, 7, 1, 1, 2, 3, 4, 5, 5,8,7,4,5,2,3,7,4,
+        0, 1, 1, 1, 1, 1, 1, 2, 4, 4, 0, 2, 0, 8, 1, 5,8,7,4,5,2,3,7,4,
+        1, 1, 2, 3, 4, 0, 5, 4, 3, 3, 3, 3, 3, 3, 3, 4,8,7,4,5,2,0,7,4,
+        0, 1, 0, 7, 2, 7, 3, 3, 3, 8, 1, 1, 1, 0, 0, 3,8,2,4,0,2,3,2,4,
+        0, 1, 1, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 2,8,7,4,1,2,3,7,4,
+        2, 1, 1, 0, 3, 3, 6, 6, 4, 0, 1, 1, 1, 6, 2, 1,2,3,4,5,2,5,6,4,
+        2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 5, 5, 6, 0,8,7,4,1,2,3,7,4,
+        0, 0, 1, 0, 3, 6, 5, 2, 0, 0, 0, 0, 1, 1, 1, 6,3,2,4,1,1,3,7,4,
     };
     
     /*const int level_u[] =
@@ -70,13 +70,15 @@ int main(int argc,char* argv[])
     sf::Text text;
 	text.setFont(police);
 	text.setString(chaine);
-	text.setCharacterSize(10);
+	text.setCharacterSize(25);
 	text.setFillColor(sf::Color::Blue);
-	text.setPosition(sf::Vector2f(10.f, 390.f));
+	text.setPosition(sf::Vector2f(5.f, 390.f));
 	
-	sf::RectangleShape rectangle_1(sf::Vector2f(80, 60));
-	rectangle_1.setFillColor(sf::Color::Red);
-	rectangle_1.setPosition(10.f, 390.f);
+	/*sf::FloatRect textRect = text.getLocalBounds();
+	text.setOrigin((int)(textRect.left + textRect.width/2.0f),
+		           (int)(textRect.top  + textRect.height/2.0f));
+	text.setPosition(sf::Vector2f(10.f, 390.f));*/
+	
     while (window.isOpen())
     {
         // handle events
@@ -92,7 +94,7 @@ int main(int argc,char* argv[])
         window.draw(map);
         window.draw(rectangle);
         window.draw(text);
-        window.draw(rectangle_1);
+        //window.draw(rectangle_1);
         //window.draw(army);
         window.display();
     }
