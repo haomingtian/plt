@@ -25,7 +25,5 @@ Castle ::Castle(CastleTypeId id, int n_x, int n_y, int n_codetuile){
 CastleTypeId  Castle::getType (){
 	return type_id;
 }
-void Castle::setNbCastle (int n_nbcastle){
-	nb_castle=n_nbcastle;
-}	
+	
 }

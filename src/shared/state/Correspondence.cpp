@@ -53,9 +53,6 @@ std::map<int,TypeNPraticableId>& Correspondence::getCorrespondenceNP (){
 std::map<int,CastleTypeId> Correspondence::getCorrespondenceC (){
 	return correspondence_castle;
 }
-std::map<int,TypeGoldId> Correspondence::getCorrespondenceG (){
-	return correspondence_gold;
-}
 std::map<int,ArmyTypeId> Correspondence::getCorrespondenceU (){
 	return correspondence_unityArmy;
 }

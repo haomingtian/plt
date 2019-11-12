@@ -10,7 +10,7 @@ BOOST_AUTO_TEST_CASE(TestStaticAssert)
   BOOST_CHECK(1);
 }
 
-BOOST_AUTO_TEST_CASE(TestUnityArmy)
+/*BOOST_AUTO_TEST_CASE(TestUnityArmy)
 {
   {
 	UnityArmy u(CAVLRY,"cav",true);
@@ -49,12 +49,12 @@ BOOST_AUTO_TEST_CASE(TestUnityArmy)
     BOOST_CHECK_EQUAL(x.getDefense (), 100);
   }
 
-  /*{
+  {
     Exemple ex {};
     ex.setX(21);
     BOOST_CHECK_LE(ex.x, 32); // Less than equal
     BOOST_CHECK_GT(ex.x, 11); // Greater than equl
-  }*/
-}
+  }
+}*/
 
 /* vim: set sw=2 sts=2 et : */

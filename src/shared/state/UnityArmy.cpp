@@ -6,33 +6,37 @@ UnityArmy ::UnityArmy(ArmyTypeId id, std::string n_name, bool n_camp){
 	type_id=id;
 	name=n_name;
 	camp=n_camp;
-	currentlife=10;
+	//currentlife=10;
 	if(id==ARCHER){
 		move_field=1;
-		pattack=100;
-		pdefense=100;
+		statistics.setAttack(100);
+		statistics.setDefense(100);
+		statistics.setCurrentLife(100);
 	}
 	else if(id==CAVLRY){
-		move_field=2;
-		pattack=150;
-		pdefense=150;
+		move_field=1;
+		statistics.setAttack(100);
+		statistics.setDefense(100);
+		statistics.setCurrentLife(100);
 	}
 	else if(id==INGENEER){
-		move_field=2;
-		pattack=200;
-		pdefense=200;
+		move_field=1;
+		statistics.setAttack(100);
+		statistics.setDefense(100);
+		statistics.setCurrentLife(100);
 	}
 	else if(id==INFANTRY){
 		move_field=1;
-		pattack=250;
-		pdefense=250;		
+		statistics.setAttack(100);
+		statistics.setDefense(100);
+		statistics.setCurrentLife(100);		
 	}	
 }
 
 ArmyTypeId UnityArmy::getType (){
 	return type_id;
 }
-int UnityArmy::getCurrentlife (){
+/*int UnityArmy::getCurrentlife (){
 	return currentlife;
 }
 void UnityArmy::setCurrentlife (int n_currentlife){
@@ -40,8 +44,8 @@ void UnityArmy::setCurrentlife (int n_currentlife){
 }
 std::string UnityArmy::getName (){
 	return name;
-}
-int UnityArmy::getAttack (){
+}*/
+/*int UnityArmy::getAttack (){
 	return pattack;
 }
 void UnityArmy::setAttack (int n_pattack){
@@ -52,7 +56,7 @@ int UnityArmy::getDefense (){
 }
 void UnityArmy::setDefense (int n_pdefense){
 	pdefense=n_pdefense;
-}
+}*/
 bool UnityArmy::getCamp (){
 	return camp;
 }
