@@ -11,8 +11,8 @@ namespace engine{
 	Engine::Engine (){
 		change_turn=false;
 		actif_player=true;
-		record["RealSize"] = 0;
-		record["tabCmd"][0] = "";
+		//record["RealSize"] = 0;
+		//record["tabCmd"][0] = "";
 	}
 	Engine::~Engine (){
 	}
@@ -42,13 +42,9 @@ namespace engine{
 	}
 	void Engine::setEnableRecord (bool val){
 	}
-	Json::Value Engine::getRecord (){
-	}
     std::map<int, std::unique_ptr<Order>>& Engine::getCurrentOrders (){
 	}
 	bool Engine::getEnableRecord() const{
-	}
-    void Engine::setRecord(const Json::Value& record){
 	}
 	bool Engine::getPlayerActif (){
 		return actif_player;

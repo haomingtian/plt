@@ -22,4 +22,22 @@ bool NPraticable::isPraticable (){
 TypeNPraticableId NPraticable:: getType (){
 	return type_id;
 }
+bool NPraticable::equals (Elements& other){
+	bool resultat;
+	if(other.isField()){
+		Field& other_field = static_cast<Field&>(other);
+		if(!other_field.isPraticable()){
+			NPraticable& other_terrain_n_praticable=static_cast<NPraticable&>(other_field);
+			if(	this->Elements::equals(other_terrain_n_praticable) &&
+				type_id==other_terrain_n_praticable.getType()){
+				resultat=true;
+			}
+			else{resultat=false;}
+		}
+		else{ resultat=false;}
+	}
+	else{resultat=false;}
+	
+	return resultat;
+}
 }

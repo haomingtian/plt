@@ -2,7 +2,7 @@
 #include "UnityArmy.h" 
 using namespace std;
 namespace state {
-UnityArmy ::UnityArmy(ArmyTypeId id, std::string n_name, bool n_camp){
+UnityArmy ::UnityArmy(ArmyTypeId id, std::string n_name, bool n_camp, int n_x, int n_y):Elements(){
 	type_id=id;
 	name=n_name;
 	camp=n_camp;
@@ -65,6 +65,9 @@ int UnityArmy::getMoveField (){
 }
 void UnityArmy::setMoveField (int n_move_field){
 	move_field=n_move_field;
+}
+Status UnityArmy::getStatus (){
+	return status;
 }
 }
 

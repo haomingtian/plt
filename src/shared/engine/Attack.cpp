@@ -11,7 +11,7 @@ namespace engine{
 	void Attack::execute (state::State& s){
 		//A remplir ultérieurement
 	}
-	Json::Value Attack::serialize (){
+	/*Json::Value Attack::serialize (){
 	Json::Value newCmd;
 	newCmd["id"] = id;
 	newCmd["player"] = (int)player;
@@ -19,5 +19,5 @@ namespace engine{
 	//newCmd["target"] = target.indice;
 	
 	return newCmd;
-	}
+	}*/
 }

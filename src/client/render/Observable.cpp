@@ -13,7 +13,7 @@ namespace render{
 	void Observable::registerObserver (IObserver* observer){
 		observers.push_back(observer);
 	}
-	void Observable::notifyObserver (state::State& s, render::CursorEventID& key, int actor, int target, state::Position& position, bool rollback){
+	void Observable::notifyObservers (state::State& s, render::CursorEventID& key, int actor, int target, state::Position& position, bool rollback){
 			for(auto observer : observers){
 		
 		observer->cursorChanged(s, key, actor, target, position, rollback);

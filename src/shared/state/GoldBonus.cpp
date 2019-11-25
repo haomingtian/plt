@@ -1,5 +1,5 @@
 #include <iostream> 
-#include "GoldBonus.h"
+//#include "GoldBonus.h"
 using namespace std;
 
 namespace state {

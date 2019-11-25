@@ -83,9 +83,16 @@ set(MACHINE_ENSEA OFF CACHE BOOL
 
 # Find library jsoncpp
 set(jsoncpp_include_dir "${PROJECT_SOURCE_DIR}/extern/jsoncpp-1.8.0")
-set(json_path "${PROJECT_SOURCE_DIR}/extern/jsoncpp-1.8.0" )
-#set(CMAKE_MODULE_PATH "${json_path}/cmake/Modules" ${CMAKE_MODULE_PATH})
-#file(GLOB_RECURSE jsoncpp_sources extern/jsoncpp-1.8.0/*.cpp)
+
+#Ajout path
+#if(WIN32)
+	#set(json_path "${PROJECT_SOURCE_DIR}/extern/jsoncpp-1.8.0/json" CACHE STRING )
+	#set(CMAKE_MODULE_PATH "${json_path}/cmake/Modules" ${CMAKE_MODULE_PATH})
+#else(WIN32)
+	#set(CMAKE_MODULE_PATH "/usr/share/SFML/cmake/Modules/" ${CMAKE_MODULE_PATH})
+#endif(WIN32)
+
+file(GLOB_RECURSE jsoncpp_sources extern/jsoncpp-1.8.0/*.cpp)
 
 
 # Find library SFML

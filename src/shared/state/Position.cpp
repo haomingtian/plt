@@ -22,6 +22,17 @@ int Position::getY (){
 void Position::setY (int y){
 	this->y = y;
 }
-/*bool Position::equals (Position& others){	
-}*/
+bool Position::equals (Position& others){	
+	bool resultat;
+	if (this->x == others.getX() && this->y == others.getY()){
+		resultat = true;
+	}
+	else{
+		resultat = false;
+	}
+	return resultat;
+}
+int Position::distance (Position& other){
+	return abs(x-other.getX())+abs(y-other.getY());
+}
 }

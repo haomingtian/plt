@@ -7,6 +7,22 @@
  
 using namespace std;
 namespace state {
+int State::initCursor (){
+	ptr_cursor=nullptr;
+	ptr_cursor= new Cursor();
+	return 1;
+}
+
+int State::verifStatus (){
+	int selec=-1;
+	for(size_t i=0; i<unityArmy.size(); i++){
+		if(unityArmy[i]->getStatus()==SELECTED){
+			selec=i;
+			break;
+		}
+	}
+	return selec;
+}
 int State::getRound (){
 	return num_round;
 }
@@ -16,8 +32,23 @@ int State::getMround (){
 void State::setRound (int round){
 	num_round=round;
 }
-bool State::isFin (){
-	return fin;
+bool State::isEnd (){
+	return end;
+}
+Cursor* State::getCursor (){
+	return ptr_cursor;
+}
+std::vector<std::vector<std::unique_ptr<Field>>>& State::getGrid (){
+	std::vector<std::vector<std::unique_ptr<Field>>> & ref_grid = grid;
+	return ref_grid;
+}
+std::vector<std::unique_ptr<UnityArmy>>& State::getUnityArmy (){
+	std::vector<std::unique_ptr<UnityArmy>>& ref_unity = unityArmy;
+	return ref_unity;
+}
+std::vector<std::unique_ptr<Castle>>& State::getCastle (){
+	std::vector<std::unique_ptr<Castle>>& ref_castle= castle;
+	return ref_castle;
 }
 int State::initGrid (std::string chemin_maptext, unsigned int width, unsigned int heigth, Correspondence& correspondence){
 	std::ifstream fichier(chemin_maptext, ios::in);
@@ -46,16 +77,19 @@ int State::initGrid (std::string chemin_maptext, unsigned int width, unsigned in
     	for (j = 0; j < heigth; j++){
     		if (map_tuiles_code[k] >= 0 && map_tuiles_code[k] <= 23){
 				 // On regarde si le code de la tuile est celui d'un Terrain Praticable
-				if (correspondence.getCorrspondenceP().find(map_tuiles_code[k]) != correspondence.getCorrspondenceP().end()){
-					Praticable newTP(correspondence.getCorrspondenceP()[map_tuiles_code[k]],i,j,map_tuiles_code[k]);
-					std::unique_ptr<Praticable> ptr(new Praticable(newTP)) ;
+				/*if (correspondence.getCorrspondenceP().find(map_tuiles_code[k]) != correspondence.getCorrspondenceP().end()){
+					Praticable newP(correspondence.getCorrspondenceP()[map_tuiles_code[k]],i,j,map_tuiles_code[k]);
+					std::unique_ptr<Praticable> ptr((&newP)) ;
 					newLigne.push_back(move(ptr));
-				}
+					
+				}*/
 				// Cas du Terrain Non Praticable
-				else if (correspondence.getCorrespondenceNP().find(map_tuiles_code[k]) != correspondence.getCorrespondenceNP().end()){
+				//else 
+				if (correspondence.getCorrespondenceNP().find(map_tuiles_code[k]) != correspondence.getCorrespondenceNP().end()){
 					NPraticable newNP(correspondence.getCorrespondenceNP()[map_tuiles_code[k]],i,j,map_tuiles_code[k]);
-					std::unique_ptr<NPraticable> ptr(new NPraticable(newNP)) ;
+					std::unique_ptr<NPraticable> ptr((&newNP)) ;
 					newLigne.push_back(move(ptr));
+					
 				}
 			}
 			else{
@@ -69,8 +103,18 @@ int State::initGrid (std::string chemin_maptext, unsigned int width, unsigned in
 	}
 	return 1;
 }
-std::vector<std::vector<std::unique_ptr<Field>>>& State::getGrid (){
-	std::vector<std::vector<std::unique_ptr<Field>>> & refGrid = grid;
-	return refGrid;
+
+int State::initUnityArmy (Correspondence& correspondence){
+	UnityArmy ing_bleu(INGENEER, "Ing1", true, 1, 21);
+	std::unique_ptr<UnityArmy> ptrIB(new UnityArmy(ing_bleu));
+	unityArmy.push_back(move(ptrIB));
+	
+	UnityArmy ing_rouge(INGENEER, "Ing2", false, 17, 5);
+	std::unique_ptr<UnityArmy> ptrIR(new UnityArmy(ing_rouge));
+	unityArmy.push_back(move(ptrIR));
+}
+State::~State (){
+	delete ptr_cursor;
+	ptr_cursor=nullptr;
 }
 }

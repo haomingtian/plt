@@ -41,7 +41,7 @@ namespace engine{
 		cout << "\n" ;
 			
 		}
-	Json::Value EndActions::serialize(){
+	/*Json::Value EndActions::serialize(){
 
 	Json::Value newCmd;	
 	newCmd["id"] = id;
@@ -49,5 +49,5 @@ namespace engine{
 	//newCmd["target"] = target.indice;
 	
 	return newCmd;
-}
+}*/
 }

@@ -12,7 +12,7 @@ namespace engine{
     void execute (state::State& s){
 		
 	}
-    Json::Value Move::serialize (){
+    /*Json::Value Move::serialize (){
 		Json::Value newCmd;
 		newCmd["id"] = id;
 		newCmd["player"] = (int)player;
@@ -21,5 +21,5 @@ namespace engine{
 		newCmd["yDestination"] = destination.getY();
 		
 		return newCmd;
-	}
+	}*/
 }
