@@ -1,32 +1,34 @@
-#include <iostream> 
 #include "Statistics.h"
 
-namespace state{
-	int Statistics::getDefense (){
-		return pdefense;
-	}
-    int Statistics::getAttack (){
-		return pattack;
-	}
-    int Statistics::getCurrentLife (){
-		return current_life;
-	}
-    int Statistics::getPriceUnity (){
-		return price_unity;
-	}
-    int Statistics::getPriceCastle (){
-		return price_castle;
-	}
-    void Statistics::setDefense (int def){
-		if(def<0) pdefense=0;
-		else pdefense=def;
-	}
-    void Statistics::setAttack (int at){
-		if(at<0) pattack=0;
-		else pattack=at;		
-	}
-    void Statistics::setCurrentLife (int c_l){
-		if(c_l<0) current_life=0;
-		else current_life=c_l;		
-	}
+namespace state {
+  class Statistics;
 }
+
+namespace state {
+
+    int Statistics::getPV()const { return pv; }
+    int Statistics::getAttack () const { return attack; }
+    int Statistics::getDefense () const { return defense; }
+    int Statistics::getDodge () const { return dodge; }
+    int Statistics::getCritical () const { return critical; }
+    void Statistics::setPV (int newPV) { pv = newPV; }
+    void Statistics::setAttack (int newAttack) { attack = newAttack; }
+    void Statistics::setDefense (int newDefense) { defense = newDefense; }
+    void Statistics::setDodge (int newDodge) { dodge = newDodge; }
+    void Statistics::setCritical (int newCritical) { critical = newCritical; }
+    bool Statistics::operator== (Statistics& other)
+    {
+        if(pv==other.getPV() && attack == other.getAttack() &&
+        defense == other.getDefense() &&
+        dodge == other.getDodge() &&
+        critical == other.getCritical()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    // Setters and Getters
+};
+

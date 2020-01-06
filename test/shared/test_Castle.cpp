@@ -11,7 +11,7 @@ BOOST_AUTO_TEST_CASE(TestStaticAssert)
 }
 
 BOOST_AUTO_TEST_CASE(TestCastle)
-{/*
+{
   {
 	Castle c(FIRSTLEVEL,1,2,2);
     BOOST_CHECK_EQUAL(c.getType(),FIRSTLEVEL);
@@ -19,7 +19,7 @@ BOOST_AUTO_TEST_CASE(TestCastle)
     BOOST_CHECK_LE(c.getCodeTuile(), 32);
     c.setCodeTuile(4);
     BOOST_CHECK_EQUAL(c.getCodeTuile(),4);
-  }*/
+  }
 
   /*{
     Exemple ex {};

@@ -2,33 +2,30 @@
 #include "TileSet.h"
 using namespace std;
 namespace render {
-TileSet::TileSet (TilesetId newID){
+TileSet::TileSet (TileSetId newID){
 	id=newID;
 	if (id == GRIDTILESET){
-		cellWidth=16;
-		cellHeight=16;
-		imageFile="/home/ensea/plt/ressources/spritee.PNG";
+		cellWidth=62;
+		cellHeight=62;
+		imageFile="./ressources/sprite_grid.png";
 	}
 	else if (id==UNITYARMYTILESET){
 		cellWidth=16;
 		cellHeight=16;
-		imageFile="/home/ensea/plt/ressources/UnityArmy.png";
+		imageFile="./ressources/UnityArmy.png";
 	}
-	else if (id==CASTLETILESET){
+	else if (id==INFOSTILESET){
 		cellWidth=64;
 		cellHeight=64;
-		imageFile="/home/ensea/plt/ressources/Castles.png";		
+		imageFile="./ressources/mugshots_tileset.png";
 	}
-	/*else if (id==INFOSTILESET){
-		cellWidth=16;
-		cellHeight=16;
-		imageFile="/home/ensea/plt/ressources/Castles.png";		
-	}*/
-	else if (id==CURSORTILESET){
-		cellWidth=16;
-		cellHeight=16;
-		imageFile="/home/ensea/plt/ressources/curseur_tileset.png";		
+	else if (id == CURSORTILESET)
+	{
+	    cellWidth=16;
+	    cellHeight=16;
+	    imageFile="./ressources/curseur_tileset.png";
 	}
+
 	textureTileset.loadFromFile(imageFile);
 }
 const std::string  TileSet::getImageFile (){

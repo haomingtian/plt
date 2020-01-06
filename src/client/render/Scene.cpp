@@ -1,5 +1,5 @@
 #include <iostream> 
-/*#include "Scene.h"
+#include "Scene.h"
 using namespace std;
 namespace render {
 void draw (sf::RenderWindow window){
@@ -30,4 +30,3 @@ void draw (sf::RenderWindow window){
     }
 }
 }
-*/

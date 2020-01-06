@@ -1,11 +1,19 @@
-#include "Action.h"
-#include <string>
-#include <iostream> 
-namespace engine{
-bool Action::getPlayer (){
+#include "engine.h"
+
+using namespace engine;
+
+ActionID Action::getActionID(){
+	return actionId;
+}
+
+bool Action::getPlayer() {
 	return player;
 }
-ActionID Action::getActionID (){
-	return id;
+
+void Action:: apply (state::State& state){
+	
 }
+
+void Action::undo (state::State& state){
+	
 }

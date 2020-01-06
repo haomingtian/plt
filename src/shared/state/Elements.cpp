@@ -10,9 +10,6 @@ Elements::Elements (){
 	name="";
 	position.setX(0);
 	position.setY(0);
-	statistics.setCurrentLife(0);
-	statistics.setAttack(0);
-	statistics.setDefense(0);
 }
 //bool isStatic ();
 Position& Elements::getPosition (){
@@ -20,10 +17,10 @@ Position& Elements::getPosition (){
 	return refPosition;
 }
 int Elements::getCodeTuile (){
-	return codetuile;
+	return codeTuile;
 }
 void Elements::setCodeTuile (int n_codetuile){
-	codetuile=n_codetuile;	
+    codeTuile=n_codetuile;
 }
 std::string Elements::getName (){
 	return name;
@@ -36,13 +33,13 @@ bool Elements::equals (Elements& o){
 	else{
 		resultat = false;
 	}
-	//return resultat;
+	return resultat;
 }
-Statistics& Elements::getStatistics (){
-	Statistics & ref_stat = statistics;
-	return ref_stat ;
+
+Statistics& Elements::getStatistics()
+{
+    Statistics & refStatistiques = statistics;
+    return refStatistiques ;
 }
-bool Elements::isField (){
-	return false;
-}
+
 }

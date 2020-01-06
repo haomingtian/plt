@@ -1,23 +1,27 @@
-#include <iostream> 
-#include "Cursor.h" 
+#include "state.h"
+
+using namespace state;
 using namespace std;
-namespace state{
-	Cursor::Cursor(int x , int y ){
-		name="";
-		statistics.getCurrentLife();
-		statistics.getDefense();
-		statistics.getAttack();
-		position.setX(0);
-		position.setY(0);
-		codetuile=0;
-	}
-	void Cursor::move (Position& destination){
-		position.setX(destination.getX());
-		position.setY(destination.getY());
-	}
-	bool Cursor::isField (){
-		return false;
-	}
-	Cursor::~Cursor(){
-	}
+
+Cursor::Cursor(int x, int y){
+    name = "";
+    statistics.setPV(0);
+    statistics.setAttack(0);
+    statistics.setDefense(0);
+    statistics.setDodge(0);
+    statistics.setCritical(0);
+    position.setX(0);
+    position.setY(0);
+    codeTuile=0;
 }
+
+bool Cursor::isField(){
+    return false;
+}
+
+void Cursor::move(Position& destination){
+    position.setX(destination.getX());
+    position.setY(destination.getY());
+}
+
+Cursor::~Cursor() {}

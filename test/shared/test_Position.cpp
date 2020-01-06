@@ -11,14 +11,14 @@ BOOST_AUTO_TEST_CASE(TestStaticAssert)
 }
 
 BOOST_AUTO_TEST_CASE(TestPosition)
-{/*
+{
   {
 	  Position p(5,2);
 	  p.setX(8);
 	  BOOST_CHECK_EQUAL(p.getX (), 8);
 	  p.setY(5);
 	  BOOST_CHECK_GT(p.y, 3);
-  }*/
+  }
 
   /*{
     Exemple ex {};
