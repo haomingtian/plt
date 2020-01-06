@@ -7,11 +7,6 @@ if(POLICY CMP0074)
   cmake_policy(SET CMP0074 NEW)
 endif()
 
-include_directories ("${PROJECT_SOURCE_DIR}/src/shared")
-include_directories ("${PROJECT_SOURCE_DIR}/src/client")
-include_directories("${PROJECT_SOURCE_DIR}/extern/SFML/include")
-link_directories("${PROJECT_SOURCE_DIR}/extern/SFML/lib")
-
 # Include helper functions
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 include(GenerateDiaHeader)
@@ -42,8 +37,8 @@ set(BUILD_CODE_COVERAGE ON CACHE BOOL
 if(BUILD_CODE_COVERAGE AND NOT UNIX)
   message(WARNING "Code coverage is only available for UNIX systems")
   set(BUILD_CODE_COVERAGE OFF)
-elseif(BUILD_CODE_COVERAGE AND NOT CMAKE_COMPILER_IS_GNUCC)
-  message(WARNING "Code coverage is only available for GNU compiler")
+elseif(BUILD_CODE_COVERAGE AND NOT CMAKE_COMPILER_IS_GNUCC AND NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  message(WARNING "Code coverage is only available for GNU compiler and Clang compiler")
   set(BUILD_CODE_COVERAGE OFF)
 endif()
 
@@ -56,15 +51,24 @@ if(BUILD_CODE_COVERAGE)
     '/usr/*'
     '${PROJECT_SOURCE_DIR}/test/*'
     '${PROJECT_SOURCE_DIR}/extern/*')
+  set(COVERAGE_GCOVR_EXCLUDES
+    /usr/
+    "${PROJECT_SOURCE_DIR}/test/"
+    "${PROJECT_SOURCE_DIR}/extern/")
   # Create script to run tests for code coverage
   set(test_runner "${CMAKE_CURRENT_BINARY_DIR}/run_test.sh")
   file(WRITE ${test_runner}
     "cd \"${CMAKE_CURRENT_BINARY_DIR}/test\"\n"
-    "ctest"
+    "ctest||/usr/bin/true"
     )
   # Create target for code coverage
   SETUP_TARGET_FOR_COVERAGE_LCOV(
     NAME code-coverage
+    EXECUTABLE sh ${test_runner}
+    DEPENDS ${test_runner}
+    )
+  SETUP_TARGET_FOR_COVERAGE_GCOVR_XML(
+    NAME code-coverage-gcov
     EXECUTABLE sh ${test_runner}
     DEPENDS ${test_runner}
     )
@@ -79,7 +83,17 @@ set(MACHINE_ENSEA OFF CACHE BOOL
 
 # Find library jsoncpp
 set(jsoncpp_include_dir "${PROJECT_SOURCE_DIR}/extern/jsoncpp-1.8.0")
+
+#Ajout path
+#if(WIN32)
+	#set(json_path "${PROJECT_SOURCE_DIR}/extern/jsoncpp-1.8.0/json" CACHE STRING )
+	#set(CMAKE_MODULE_PATH "${json_path}/cmake/Modules" ${CMAKE_MODULE_PATH})
+#else(WIN32)
+	#set(CMAKE_MODULE_PATH "/usr/share/SFML/cmake/Modules/" ${CMAKE_MODULE_PATH})
+#endif(WIN32)
+
 file(GLOB_RECURSE jsoncpp_sources extern/jsoncpp-1.8.0/*.cpp)
+
 
 # Find library SFML
 if(WIN32)
@@ -90,10 +104,10 @@ else(WIN32)
   set(CMAKE_MODULE_PATH "/usr/share/SFML/cmake/Modules/" ${CMAKE_MODULE_PATH})
 endif(WIN32)
 if(${MACHINE_ENSEA})
-#  set(SFML_ROOT "/usr/lsa")
-#  set(CMAKE_MODULE_PATH "${SFML_ROOT}/share/SFML/cmake/Modules/" ${CMAKE_MODULE_PATH})
+  set(SFML_ROOT "/usr/lsa")
+  set(CMAKE_MODULE_PATH "${SFML_ROOT}/share/SFML/cmake/Modules/" ${CMAKE_MODULE_PATH})
 endif()
-#find_package(SFML 2 COMPONENTS graphics network)
+find_package(SFML 2 COMPONENTS graphics network window system)
 if(NOT ${MACHINE_ENSEA})
   set(SFML_LIBRARIES sfml-graphics sfml-network sfml-window sfml-system)
 endif()
@@ -115,12 +129,12 @@ add_subdirectory(rapport)
 
 # Unit tests
 # Set BUILD_TESTING to OFF in CMakeCache to disable tests
-#set(BUILD_TESTING ON CACHE BOOL
-#  "Set BUILD_TESTING to OFF to disable tests")
-#if(BUILD_TESTING)
-#  # Include tests scripts
-#  add_subdirectory(test)
-#endif()
+set(BUILD_TESTING ON CACHE BOOL
+  "Set BUILD_TESTING to OFF to disable tests")
+if(BUILD_TESTING)
+  # Include tests scripts
+  add_subdirectory(test)
+endif()
 
 # vim: set sw=2 sts=2 et:
 
